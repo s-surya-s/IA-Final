@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Logical Design" id="LogicalDesign-9e0" database="LogicalDesign" >
+	<schema name="INSTANCE" catalogname="Logical Design" >
+		<table name="Daily_Rides_Fact" prior="Ride_Fact" >
+			<column name="Date_SK_ID" prior="Ride_SK_ID" type="INT" jt="4" mandatory="y" />
+			<column name="Station_SK_ID" type="INT" jt="4" mandatory="y" />
+			<column name="Member_Type_SK_ID" prior="Member_SK_ID" type="INT" jt="4" mandatory="y" />
+			<column name="Rideable_Type_SK_ID" type="INT" jt="4" mandatory="y" />
+			<column name="Weather_SK_ID" type="INT" jt="4" mandatory="y" />
+			<column name="Total_Usage_Hours" prior="Ride_Duration" type="INT" jt="4" />
+			<column name="Total_Rides_Count" prior="Ride_Fare" type="INT" jt="4" />
+			<column name="Total_Fare" type="INT" jt="4" />
+			<index name="pk_Ride_Fact" unique="PRIMARY_KEY" >
+				<column name="Date_SK_ID" />
+				<column name="Station_SK_ID" />
+				<column name="Member_Type_SK_ID" />
+				<column name="Rideable_Type_SK_ID" />
+				<column name="Weather_SK_ID" />
+			</index>
+			<fk name="fk_Ride_Fact_Weather_Dim" virtual="y" to_schema="Logical Design.INSTANCE" to_table="Weather_Dim" type="Identifying" mandatory="y" cardinality="ZeroMore" range_from="0" range_to="0" >
+				<fk_column name="Member_Type_SK_ID" pk="Weather_SK_ID" />
+			</fk>
+			<fk name="fk_Ride_Fact_Date_Dim" virtual="y" to_schema="Logical Design.INSTANCE" to_table="Date_Dim" type="Identifying" mandatory="y" cardinality="ZeroMore" range_from="0" range_to="0" >
+				<fk_column name="Date_SK_ID" pk="Date_SK_ID" />
+			</fk>
+			<fk name="fk_Ride_Fact_Time_Dim" virtual="y" to_schema="Logical Design.INSTANCE" to_table="Time_Dim" type="Identifying" mandatory="y" cardinality="ZeroMore" range_from="0" range_to="0" />
+			<fk name="fk_Ride_Fact_Station_Dim" virtual="y" to_schema="Logical Design.INSTANCE" to_table="Station_Dim" type="Identifying" mandatory="y" cardinality="ZeroMore" range_from="0" range_to="0" >
+				<fk_column name="Station_SK_ID" pk="Station_SK_ID" />
+			</fk>
+			<fk name="fk_Ride_Fact_Member_Type_Dim" virtual="y" to_schema="Logical Design.INSTANCE" to_table="Member_Type_Dim" type="Identifying" mandatory="y" cardinality="ZeroMore" range_from="0" range_to="0" >
+				<fk_column name="Member_Type_SK_ID" pk="Memeber_Type_SK_ID" />
+			</fk>
+			<fk name="fk_Ride_Fact_Rideable_Type_Dim" virtual="y" to_schema="Logical Design.INSTANCE" to_table="Rideable_Type_Dim" type="Identifying" mandatory="y" cardinality="ZeroMore" range_from="0" range_to="0" >
+				<fk_column name="Rideable_Type_SK_ID" pk="Rideable_Type_SK_ID" />
+			</fk>
+		</table>
+		<table name="Date_Dim" prior="Date" >
+			<column name="Date_SK_ID" prior="Date_ID" type="INT" jt="4" mandatory="y" />
+			<column name="Date" type="DATE" jt="91" />
+			<column name="Year" type="INT" jt="4" />
+			<column name="Quarter" type="INT" jt="4" />
+			<column name="Month" type="INT" jt="4" />
+			<column name="Week" type="DATE" jt="91" />
+			<column name="Day" type="INT" jt="4" />
+			<column name="Hour" type="INT" jt="4" />
+			<index name="pk_Date" unique="PRIMARY_KEY" >
+				<column name="Date_SK_ID" />
+			</index>
+		</table>
+		<table name="Entity" >
+			<column name="Date_SK_ID" type="INT" jt="4" />
+		</table>
+		<table name="Member_Type_Dim" prior="Member_Type" >
+			<column name="Memeber_Type_SK_ID" prior="Memeber_Type_ID" type="INT" jt="4" mandatory="y" />
+			<column name="Member_Type_Desc" prior="Membership_Type_Desc" type="TEXT" jt="-1" />
+			<index name="pk_Membership" unique="PRIMARY_KEY" >
+				<column name="Memeber_Type_SK_ID" />
+			</index>
+		</table>
+		<table name="Rideable Type" prior="Entity" />
+		<table name="Rideable_Type_Dim" prior="Rideable_Type" >
+			<column name="Rideable_Type_SK_ID" prior="Rideable_Type_ID" type="INT" jt="4" mandatory="y" />
+			<column name="Rideable_Type_Desc" prior="Membership_Type_Desc" type="TEXT" jt="-1" />
+			<index name="pk_Membership_0" unique="PRIMARY_KEY" >
+				<column name="Rideable_Type_SK_ID" />
+			</index>
+		</table>
+		<table name="Station_Dim" prior="Station" >
+			<column name="Station_SK_ID" prior="Station SK_ID" type="INT" jt="4" mandatory="y" />
+			<column name="Station_ID" type="INT" jt="4" />
+			<column name="Station Name" type="VARCHAR" length="100" jt="12" />
+			<column name="Latitude" type="VARCHAR" jt="12" />
+			<column name="Longitude" type="VARCHAR" jt="12" />
+			<index name="pk_Station" unique="PRIMARY_KEY" >
+				<column name="Station_SK_ID" />
+			</index>
+		</table>
+		<table name="Time_Dim" prior="Time" >
+			<column name="Time_SK_ID" prior="Time_ID" type="INT" jt="4" mandatory="y" />
+			<column name="Hour" type="INT" jt="4" />
+			<column name="Minute" type="INT" jt="4" />
+			<column name="Seconds" type="INT" jt="4" />
+			<index name="pk_Time" unique="PRIMARY_KEY" >
+				<column name="Time_SK_ID" />
+			</index>
+		</table>
+		<table name="Weather_Dim" prior="Weather" >
+			<column name="Weather_SK_ID" prior="Weather_ID" type="INT" jt="4" mandatory="y" />
+			<column name="Weather_Name" type="VARCHAR" length="100" jt="12" />
+			<index name="pk_Weather_Dim" unique="PRIMARY_KEY" >
+				<column name="Weather_SK_ID" />
+			</index>
+		</table>
+	</schema>
+	<layout name="Default Layout" id="Layout-22b5" show_relation="columns" >
+		<entity schema="Logical Design.INSTANCE" name="Daily_Rides_Fact" color="3986C1" x="288" y="320" />
+		<entity schema="Logical Design.INSTANCE" name="Date_Dim" color="C1D8EE" x="304" y="48" />
+		<entity schema="Logical Design.INSTANCE" name="Member_Type_Dim" color="C1D8EE" x="576" y="448" />
+		<entity schema="Logical Design.INSTANCE" name="Rideable_Type_Dim" color="3986C1" x="592" y="336" />
+		<entity schema="Logical Design.INSTANCE" name="Station_Dim" color="C1D8EE" x="48" y="368" />
+		<entity schema="Logical Design.INSTANCE" name="Weather_Dim" color="C1D8EE" x="320" y="592" />
+	</layout>
+</project>
