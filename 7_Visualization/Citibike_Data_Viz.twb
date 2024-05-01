@@ -1,0 +1,2815 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20241.24.0208.0337                               -->
+<workbook original-version='18.1' source-build='2024.1.0 (20241.24.0208.0337)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <_.fcp.AccessibleZoneTabOrder.true...AccessibleZoneTabOrder />
+    <_.fcp.AnimationOnByDefault.true...AnimationOnByDefault />
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelExtractV2.true...ObjectModelExtractV2 />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <SetMembershipControl />
+    <SheetIdentifierTracking />
+    <SortTagCleanup />
+    <_.fcp.VConnDownstreamExtractsWithWarnings.true...VConnDownstreamExtractsWithWarnings />
+    <WindowsPersistSimpleIdentifiers />
+    <WorksheetBackgroundTransparency />
+    <ZoneBackgroundTransparency />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <style>
+    <style-rule element='title'>
+      <format attr='font-size' value='18' />
+      <format attr='font-weight' value='bold' />
+      <format attr='color' value='#b07aa1' />
+    </style-rule>
+    <style-rule element='dash-title'>
+      <format attr='font-weight' value='bold' />
+      <format attr='font-size' value='28' />
+      <format attr='color' value='#b07aa1' />
+    </style-rule>
+    <style-rule element='all'>
+      <format attr='font-family' value='Arial' />
+    </style-rule>
+  </style>
+  <datasources>
+    <datasource hasconnection='false' inline='true' name='Parameters' version='18.1'>
+      <aliases enabled='yes' />
+      <column caption='Legend Selector' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;All&quot;'>
+        <calculation class='tableau' formula='&quot;All&quot;' />
+        <members>
+          <member value='&quot;All&quot;' />
+          <member value='&quot;Member&quot;' />
+          <member value='&quot;Rideable&quot;' />
+        </members>
+      </column>
+    </datasource>
+    <datasource caption='citibike_dw' inline='true' name='federated.1m7m90n16lv3kp11m1co31xlxkrj' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='localhost' name='mysql.1bh72e80mg07la1d3mlqy01bg4s6'>
+            <connection class='mysql' dbname='citibike_dw' odbc-native-protocol='' one-time-sql='' port='3306' server='localhost' source-charset='' username='root' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation join='inner' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[rides_fact].[weather_sk_id]' />
+              <expression op='[weather_dim].[weather_sk_id]' />
+            </expression>
+          </clause>
+          <relation join='inner' type='join'>
+            <clause type='join'>
+              <expression op='='>
+                <expression op='[rides_fact].[station_sk_id]' />
+                <expression op='[station_dim].[station_sk_id]' />
+              </expression>
+            </clause>
+            <relation join='inner' type='join'>
+              <clause type='join'>
+                <expression op='='>
+                  <expression op='[rides_fact].[rideable_type_sk_id]' />
+                  <expression op='[rideable_type_dim].[rideable_type_sk_id]' />
+                </expression>
+              </clause>
+              <relation join='inner' type='join'>
+                <clause type='join'>
+                  <expression op='='>
+                    <expression op='[rides_fact].[member_type_sk_id]' />
+                    <expression op='[member_type_dim].[member_type_sk_id]' />
+                  </expression>
+                </clause>
+                <relation join='inner' type='join'>
+                  <clause type='join'>
+                    <expression op='='>
+                      <expression op='[rides_fact].[date_sk_id]' />
+                      <expression op='[date_dim].[date_sk_id]' />
+                    </expression>
+                  </clause>
+                  <relation connection='mysql.1bh72e80mg07la1d3mlqy01bg4s6' name='rides_fact' table='[rides_fact]' type='table' />
+                  <relation connection='mysql.1bh72e80mg07la1d3mlqy01bg4s6' name='date_dim' table='[date_dim]' type='table' />
+                </relation>
+                <relation connection='mysql.1bh72e80mg07la1d3mlqy01bg4s6' name='member_type_dim' table='[member_type_dim]' type='table' />
+              </relation>
+              <relation connection='mysql.1bh72e80mg07la1d3mlqy01bg4s6' name='rideable_type_dim' table='[rideable_type_dim]' type='table' />
+            </relation>
+            <relation connection='mysql.1bh72e80mg07la1d3mlqy01bg4s6' name='station_dim' table='[station_dim]' type='table' />
+          </relation>
+          <relation connection='mysql.1bh72e80mg07la1d3mlqy01bg4s6' name='weather_dim' table='[weather_dim]' type='table' />
+        </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation join='inner' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[rides_fact].[weather_sk_id]' />
+              <expression op='[weather_dim].[weather_sk_id]' />
+            </expression>
+          </clause>
+          <relation join='inner' type='join'>
+            <clause type='join'>
+              <expression op='='>
+                <expression op='[rides_fact].[station_sk_id]' />
+                <expression op='[station_dim].[station_sk_id]' />
+              </expression>
+            </clause>
+            <relation join='inner' type='join'>
+              <clause type='join'>
+                <expression op='='>
+                  <expression op='[rides_fact].[rideable_type_sk_id]' />
+                  <expression op='[rideable_type_dim].[rideable_type_sk_id]' />
+                </expression>
+              </clause>
+              <relation join='inner' type='join'>
+                <clause type='join'>
+                  <expression op='='>
+                    <expression op='[rides_fact].[member_type_sk_id]' />
+                    <expression op='[member_type_dim].[member_type_sk_id]' />
+                  </expression>
+                </clause>
+                <relation join='inner' type='join'>
+                  <clause type='join'>
+                    <expression op='='>
+                      <expression op='[rides_fact].[date_sk_id]' />
+                      <expression op='[date_dim].[date_sk_id]' />
+                    </expression>
+                  </clause>
+                  <relation connection='mysql.1bh72e80mg07la1d3mlqy01bg4s6' name='rides_fact' table='[rides_fact]' type='table' />
+                  <relation connection='mysql.1bh72e80mg07la1d3mlqy01bg4s6' name='date_dim' table='[date_dim]' type='table' />
+                </relation>
+                <relation connection='mysql.1bh72e80mg07la1d3mlqy01bg4s6' name='member_type_dim' table='[member_type_dim]' type='table' />
+              </relation>
+              <relation connection='mysql.1bh72e80mg07la1d3mlqy01bg4s6' name='rideable_type_dim' table='[rideable_type_dim]' type='table' />
+            </relation>
+            <relation connection='mysql.1bh72e80mg07la1d3mlqy01bg4s6' name='station_dim' table='[station_dim]' type='table' />
+          </relation>
+          <relation connection='mysql.1bh72e80mg07la1d3mlqy01bg4s6' name='weather_dim' table='[weather_dim]' type='table' />
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <cols>
+          <map key='[date]' value='[date_dim].[date]' />
+          <map key='[date_sk_id (date_dim)]' value='[date_dim].[date_sk_id]' />
+          <map key='[date_sk_id]' value='[rides_fact].[date_sk_id]' />
+          <map key='[day]' value='[date_dim].[day]' />
+          <map key='[hour]' value='[date_dim].[hour]' />
+          <map key='[member_type_desc]' value='[member_type_dim].[member_type_desc]' />
+          <map key='[member_type_sk_id (member_type_dim)]' value='[member_type_dim].[member_type_sk_id]' />
+          <map key='[member_type_sk_id]' value='[rides_fact].[member_type_sk_id]' />
+          <map key='[month]' value='[date_dim].[month]' />
+          <map key='[quarter]' value='[date_dim].[quarter]' />
+          <map key='[rideable_type_desc]' value='[rideable_type_dim].[rideable_type_desc]' />
+          <map key='[rideable_type_sk_id (rideable_type_dim)]' value='[rideable_type_dim].[rideable_type_sk_id]' />
+          <map key='[rideable_type_sk_id]' value='[rides_fact].[rideable_type_sk_id]' />
+          <map key='[station_id]' value='[station_dim].[station_id]' />
+          <map key='[station_name]' value='[station_dim].[station_name]' />
+          <map key='[station_sk_id (station_dim)]' value='[station_dim].[station_sk_id]' />
+          <map key='[station_sk_id]' value='[rides_fact].[station_sk_id]' />
+          <map key='[total_fare]' value='[rides_fact].[total_fare]' />
+          <map key='[total_rides_count]' value='[rides_fact].[total_rides_count]' />
+          <map key='[total_usage_hours]' value='[rides_fact].[total_usage_hours]' />
+          <map key='[weather_name]' value='[weather_dim].[weather_name]' />
+          <map key='[weather_sk_id (weather_dim)]' value='[weather_dim].[weather_sk_id]' />
+          <map key='[weather_sk_id]' value='[rides_fact].[weather_sk_id]' />
+          <map key='[week]' value='[date_dim].[week]' />
+          <map key='[year]' value='[date_dim].[year]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>date_sk_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[date_sk_id]</local-name>
+            <parent-name>[rides_fact]</parent-name>
+            <remote-alias>date_sk_id</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>station_sk_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[station_sk_id]</local-name>
+            <parent-name>[rides_fact]</parent-name>
+            <remote-alias>station_sk_id</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>member_type_sk_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[member_type_sk_id]</local-name>
+            <parent-name>[rides_fact]</parent-name>
+            <remote-alias>member_type_sk_id</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>rideable_type_sk_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[rideable_type_sk_id]</local-name>
+            <parent-name>[rides_fact]</parent-name>
+            <remote-alias>rideable_type_sk_id</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>weather_sk_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[weather_sk_id]</local-name>
+            <parent-name>[rides_fact]</parent-name>
+            <remote-alias>weather_sk_id</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_usage_hours</remote-name>
+            <remote-type>4</remote-type>
+            <local-name>[total_usage_hours]</local-name>
+            <parent-name>[rides_fact]</parent-name>
+            <remote-alias>total_usage_hours</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>6</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_REAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_FLOAT&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_rides_count</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[total_rides_count]</local-name>
+            <parent-name>[rides_fact]</parent-name>
+            <remote-alias>total_rides_count</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_fare</remote-name>
+            <remote-type>4</remote-type>
+            <local-name>[total_fare]</local-name>
+            <parent-name>[rides_fact]</parent-name>
+            <remote-alias>total_fare</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>6</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_REAL&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_FLOAT&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>date_sk_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[date_sk_id (date_dim)]</local-name>
+            <parent-name>[date_dim]</parent-name>
+            <remote-alias>date_sk_id</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[date]</local-name>
+            <parent-name>[date_dim]</parent-name>
+            <remote-alias>date</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_DATE&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_DATE&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>year</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[year]</local-name>
+            <parent-name>[date_dim]</parent-name>
+            <remote-alias>year</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>quarter</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[quarter]</local-name>
+            <parent-name>[date_dim]</parent-name>
+            <remote-alias>quarter</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>month</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[month]</local-name>
+            <parent-name>[date_dim]</parent-name>
+            <remote-alias>month</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>week</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[week]</local-name>
+            <parent-name>[date_dim]</parent-name>
+            <remote-alias>week</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>day</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[day]</local-name>
+            <parent-name>[date_dim]</parent-name>
+            <remote-alias>day</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>hour</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[hour]</local-name>
+            <parent-name>[date_dim]</parent-name>
+            <remote-alias>hour</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>member_type_sk_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[member_type_sk_id (member_type_dim)]</local-name>
+            <parent-name>[member_type_dim]</parent-name>
+            <remote-alias>member_type_sk_id</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>member_type_desc</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[member_type_desc]</local-name>
+            <parent-name>[member_type_dim]</parent-name>
+            <remote-alias>member_type_desc</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>16383</width>
+            <contains-null>false</contains-null>
+            <cast-to-local-type>true</cast-to-local-type>
+            <collation charset='296' flag='3' name='LROOT_S1' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WLONGVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>rideable_type_sk_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[rideable_type_sk_id (rideable_type_dim)]</local-name>
+            <parent-name>[rideable_type_dim]</parent-name>
+            <remote-alias>rideable_type_sk_id</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>rideable_type_desc</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[rideable_type_desc]</local-name>
+            <parent-name>[rideable_type_dim]</parent-name>
+            <remote-alias>rideable_type_desc</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>16383</width>
+            <contains-null>false</contains-null>
+            <cast-to-local-type>true</cast-to-local-type>
+            <collation charset='296' flag='3' name='LROOT_S1' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WLONGVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>station_sk_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[station_sk_id (station_dim)]</local-name>
+            <parent-name>[station_dim]</parent-name>
+            <remote-alias>station_sk_id</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>station_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[station_id]</local-name>
+            <parent-name>[station_dim]</parent-name>
+            <remote-alias>station_id</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>station_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[station_name]</local-name>
+            <parent-name>[station_dim]</parent-name>
+            <remote-alias>station_name</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>100</width>
+            <contains-null>false</contains-null>
+            <collation charset='296' flag='3' name='LROOT_S1' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>weather_sk_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[weather_sk_id (weather_dim)]</local-name>
+            <parent-name>[weather_dim]</parent-name>
+            <remote-alias>weather_sk_id</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>weather_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[weather_name]</local-name>
+            <parent-name>[weather_dim]</parent-name>
+            <remote-alias>weather_name</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>100</width>
+            <contains-null>false</contains-null>
+            <collation charset='296' flag='3' name='LROOT_S1' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Legend' datatype='string' name='[Calculation_588282712874438658]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='CASE [Parameters].[Parameter 1]&#13;&#10;WHEN &apos;All&apos; THEN &apos;All&apos;&#13;&#10;WHEN &apos;Member&apos; THEN [member_type_desc]&#13;&#10;WHEN &apos;Rideable&apos; THEN [rideable_type_desc]&#13;&#10;END' />
+      </column>
+      <column aggregation='Sum' datatype='integer' name='[Date (Weekdays)]' role='dimension' type='ordinal' user:agg-type='Weekday' user:base-field='date' user:ui-builder='date-bin-builder'>
+        <calculation class='tableau' formula='DATEPART(&apos;weekday&apos;, [date])' />
+      </column>
+      <_.fcp.ObjectModelTableType.true...column caption='rides_fact' datatype='table' name='[__tableau_internal_object_id__].[rides_fact_190114C016984A47A5BB61C74FC1786E]' role='measure' type='quantitative' />
+      <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+      <column aggregation='Sum' caption='Date Sk Id (Date Dim)' datatype='integer' name='[date_sk_id (date_dim)]' role='dimension' type='ordinal' />
+      <column aggregation='Sum' caption='Date Sk Id' datatype='integer' name='[date_sk_id]' role='dimension' type='ordinal' />
+      <column caption='Day' datatype='integer' name='[day]' role='dimension' type='quantitative' />
+      <column aggregation='Sum' caption='Hour' datatype='integer' name='[hour]' role='dimension' type='ordinal' />
+      <column caption='Member Type' datatype='string' name='[member_type_desc]' role='dimension' type='nominal' />
+      <column aggregation='Sum' caption='Member Type Sk Id (Member Type Dim)' datatype='integer' name='[member_type_sk_id (member_type_dim)]' role='dimension' type='ordinal' />
+      <column aggregation='Sum' caption='Member Type Sk Id' datatype='integer' name='[member_type_sk_id]' role='dimension' type='ordinal' />
+      <column caption='Month' datatype='integer' name='[month]' role='dimension' type='quantitative' />
+      <column caption='Quarter' datatype='integer' name='[quarter]' role='dimension' type='quantitative' />
+      <column caption='Rideable Type' datatype='string' name='[rideable_type_desc]' role='dimension' type='nominal' />
+      <column aggregation='Sum' caption='Rideable Type Sk Id (Rideable Type Dim)' datatype='integer' name='[rideable_type_sk_id (rideable_type_dim)]' role='dimension' type='ordinal' />
+      <column aggregation='Sum' caption='Rideable Type Sk Id' datatype='integer' name='[rideable_type_sk_id]' role='dimension' type='ordinal' />
+      <column caption='Station Id' datatype='integer' name='[station_id]' role='dimension' type='ordinal' />
+      <column caption='Station Name' datatype='string' name='[station_name]' role='dimension' type='nominal' />
+      <column aggregation='Sum' caption='Station Sk Id (Station Dim)' datatype='integer' name='[station_sk_id (station_dim)]' role='dimension' type='ordinal' />
+      <column aggregation='Sum' caption='Station Sk Id' datatype='integer' name='[station_sk_id]' role='dimension' type='ordinal' />
+      <column caption='Total Fare' datatype='real' default-format='c&quot;$&quot;#,##0.00;(&quot;$&quot;#,##0.00)' name='[total_fare]' role='measure' type='quantitative' />
+      <column caption='Total Rides Count' datatype='integer' default-format='n#,##0;-#,##0' name='[total_rides_count]' role='measure' type='quantitative' />
+      <column caption='Total Usage Hours' datatype='real' name='[total_usage_hours]' role='measure' type='quantitative' />
+      <column caption='Weather' datatype='string' name='[weather_name]' role='dimension' type='nominal' />
+      <column aggregation='Sum' caption='Weather Sk Id (Weather Dim)' datatype='integer' name='[weather_sk_id (weather_dim)]' role='dimension' type='ordinal' />
+      <column aggregation='Sum' caption='Weather Sk Id' datatype='integer' name='[weather_sk_id]' role='dimension' type='ordinal' />
+      <column caption='Week' datatype='integer' name='[week]' role='dimension' type='quantitative' />
+      <column caption='Year' datatype='integer' name='[year]' role='dimension' type='quantitative' />
+      <column-instance column='[__tableau_internal_object_id__].[rides_fact_190114C016984A47A5BB61C74FC1786E]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:rides_fact_190114C016984A47A5BB61C74FC1786E:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[total_rides_count]' derivation='Avg' name='[avg:total_rides_count:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_588282712874438658]' derivation='None' name='[none:Calculation_588282712874438658:nk]' pivot='key' type='nominal' />
+      <column-instance column='[weather_name]' derivation='None' name='[none:weather_name:nk]' pivot='key' type='nominal' />
+      <column-instance column='[total_fare]' derivation='Sum' name='[sum:total_fare:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[total_rides_count]' derivation='Sum' name='[sum:total_rides_count:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[total_usage_hours]' derivation='Sum' name='[sum:total_usage_hours:qk]' pivot='key' type='quantitative' />
+      <group caption='Action (Legend,Date)' hidden='true' name='[Action (Legend,Date)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[Calculation_588282712874438658]' />
+          <groupfilter function='level-members' level='[date]' />
+        </groupfilter>
+      </group>
+      <group caption='Action (Legend,Weather)' hidden='true' name='[Action (Legend,Weather)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[Calculation_588282712874438658]' />
+          <groupfilter function='level-members' level='[weather_name]' />
+        </groupfilter>
+      </group>
+      <extract _.fcp.ObjectModelExtractV2.true...object-id='' _.fcp.VConnDownstreamExtractsWithWarnings.true...user-specific='false' count='-1' enabled='true' units='records'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_US' class='hyper' dbname='D:/Masters/CourseWork/Information Architecture/IA-Final/7_Visualization/citibike_dw.hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='04/26/2024 02:10:45 PM' username='tableau_internal_user'>
+          <_.fcp.ObjectModelEncapsulateLegacy.false...relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <cols>
+            <map key='[date]' value='[Extract].[date]' />
+            <map key='[date_sk_id (date_dim)]' value='[Extract].[date_sk_id]' />
+            <map key='[date_sk_id]' value='[Extract].[date_sk_id1]' />
+            <map key='[day]' value='[Extract].[day]' />
+            <map key='[hour]' value='[Extract].[hour]' />
+            <map key='[member_type_desc]' value='[Extract].[member_type_desc]' />
+            <map key='[member_type_sk_id (member_type_dim)]' value='[Extract].[member_type_sk_id]' />
+            <map key='[member_type_sk_id]' value='[Extract].[member_type_sk_id1]' />
+            <map key='[month]' value='[Extract].[month]' />
+            <map key='[quarter]' value='[Extract].[quarter]' />
+            <map key='[rideable_type_desc]' value='[Extract].[rideable_type_desc]' />
+            <map key='[rideable_type_sk_id (rideable_type_dim)]' value='[Extract].[rideable_type_sk_id]' />
+            <map key='[rideable_type_sk_id]' value='[Extract].[rideable_type_sk_id1]' />
+            <map key='[station_id]' value='[Extract].[station_id]' />
+            <map key='[station_name]' value='[Extract].[station_name]' />
+            <map key='[station_sk_id (station_dim)]' value='[Extract].[station_sk_id]' />
+            <map key='[station_sk_id]' value='[Extract].[station_sk_id1]' />
+            <map key='[total_fare]' value='[Extract].[total_fare]' />
+            <map key='[total_rides_count]' value='[Extract].[total_rides_count]' />
+            <map key='[total_usage_hours]' value='[Extract].[total_usage_hours]' />
+            <map key='[weather_name]' value='[Extract].[weather_name]' />
+            <map key='[weather_sk_id (weather_dim)]' value='[Extract].[weather_sk_id]' />
+            <map key='[weather_sk_id]' value='[Extract].[weather_sk_id1]' />
+            <map key='[week]' value='[Extract].[week]' />
+            <map key='[year]' value='[Extract].[year]' />
+          </cols>
+          <refresh>
+            <refresh-event add-from-file-path='citibike_dw' increment-value='%null%' refresh-type='create' rows-inserted='7627' timestamp-start='2024-04-26 14:10:43.310' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>date_sk_id1</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[date_sk_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>date_sk_id1</remote-alias>
+              <ordinal>0</ordinal>
+              <family>rides_fact</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>816</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>station_sk_id1</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[station_sk_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>station_sk_id1</remote-alias>
+              <ordinal>1</ordinal>
+              <family>rides_fact</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>9</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>member_type_sk_id1</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[member_type_sk_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>member_type_sk_id1</remote-alias>
+              <ordinal>2</ordinal>
+              <family>rides_fact</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>rideable_type_sk_id1</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[rideable_type_sk_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>rideable_type_sk_id1</remote-alias>
+              <ordinal>3</ordinal>
+              <family>rides_fact</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>weather_sk_id1</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[weather_sk_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>weather_sk_id1</remote-alias>
+              <ordinal>4</ordinal>
+              <family>rides_fact</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>total_usage_hours</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[total_usage_hours]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>total_usage_hours</remote-alias>
+              <ordinal>5</ordinal>
+              <family>rides_fact</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2962</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>total_rides_count</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[total_rides_count]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>total_rides_count</remote-alias>
+              <ordinal>6</ordinal>
+              <family>rides_fact</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>17</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>total_fare</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[total_fare]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>total_fare</remote-alias>
+              <ordinal>7</ordinal>
+              <family>rides_fact</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>483</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>date_sk_id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[date_sk_id (date_dim)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>date_sk_id</remote-alias>
+              <ordinal>8</ordinal>
+              <family>date_dim</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>816</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>date</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[date]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>date</remote-alias>
+              <ordinal>9</ordinal>
+              <family>date_dim</family>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>31</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>year</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[year]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>year</remote-alias>
+              <ordinal>10</ordinal>
+              <family>date_dim</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>quarter</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[quarter]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>quarter</remote-alias>
+              <ordinal>11</ordinal>
+              <family>date_dim</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>month</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[month]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>month</remote-alias>
+              <ordinal>12</ordinal>
+              <family>date_dim</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>week</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[week]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>week</remote-alias>
+              <ordinal>13</ordinal>
+              <family>date_dim</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>day</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[day]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>day</remote-alias>
+              <ordinal>14</ordinal>
+              <family>date_dim</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>31</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>hour</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[hour]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>hour</remote-alias>
+              <ordinal>15</ordinal>
+              <family>date_dim</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>24</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>member_type_sk_id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[member_type_sk_id (member_type_dim)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>member_type_sk_id</remote-alias>
+              <ordinal>16</ordinal>
+              <family>member_type_dim</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>member_type_desc</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[member_type_desc]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>member_type_desc</remote-alias>
+              <ordinal>17</ordinal>
+              <family>member_type_dim</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='3' name='LROOT_S1' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>rideable_type_sk_id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[rideable_type_sk_id (rideable_type_dim)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>rideable_type_sk_id</remote-alias>
+              <ordinal>18</ordinal>
+              <family>rideable_type_dim</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>rideable_type_desc</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[rideable_type_desc]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>rideable_type_desc</remote-alias>
+              <ordinal>19</ordinal>
+              <family>rideable_type_dim</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='3' name='LROOT_S1' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>station_sk_id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[station_sk_id (station_dim)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>station_sk_id</remote-alias>
+              <ordinal>20</ordinal>
+              <family>station_dim</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>9</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>station_id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[station_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>station_id</remote-alias>
+              <ordinal>21</ordinal>
+              <family>station_dim</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>9</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>station_name</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[station_name]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>station_name</remote-alias>
+              <ordinal>22</ordinal>
+              <family>station_dim</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>9</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='3' name='LROOT_S1' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>weather_sk_id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[weather_sk_id (weather_dim)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>weather_sk_id</remote-alias>
+              <ordinal>23</ordinal>
+              <family>weather_dim</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>weather_name</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[weather_name]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>weather_name</remote-alias>
+              <ordinal>24</ordinal>
+              <family>weather_dim</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='3' name='LROOT_S1' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rides_fact_190114C016984A47A5BB61C74FC1786E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.1m7m90n16lv3kp11m1co31xlxkrj].[__tableau_internal_object_id__].[cnt:rides_fact_190114C016984A47A5BB61C74FC1786E:qk]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.1m7m90n16lv3kp11m1co31xlxkrj].[sum:total_fare:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.1m7m90n16lv3kp11m1co31xlxkrj].[sum:total_usage_hours:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.1m7m90n16lv3kp11m1co31xlxkrj].[avg:total_rides_count:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.1m7m90n16lv3kp11m1co31xlxkrj].[sum:total_rides_count:qk]&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:weather_name:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;clear-day&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;partly-cloudy-night&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;partly-cloudy-day&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;cloudy&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;rain&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;clear-night&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:Calculation_588282712874438658:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;All&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>%null%</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;classic_bike&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;member&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;electric_bike&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;casual&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <datasource-dependencies datasource='Parameters'>
+        <column caption='Legend Selector' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;All&quot;'>
+          <calculation class='tableau' formula='&quot;All&quot;' />
+        </column>
+      </datasource-dependencies>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='rides_fact' id='rides_fact_190114C016984A47A5BB61C74FC1786E'>
+            <properties context=''>
+              <relation join='inner' type='join'>
+                <clause type='join'>
+                  <expression op='='>
+                    <expression op='[rides_fact].[weather_sk_id]' />
+                    <expression op='[weather_dim].[weather_sk_id]' />
+                  </expression>
+                </clause>
+                <relation join='inner' type='join'>
+                  <clause type='join'>
+                    <expression op='='>
+                      <expression op='[rides_fact].[station_sk_id]' />
+                      <expression op='[station_dim].[station_sk_id]' />
+                    </expression>
+                  </clause>
+                  <relation join='inner' type='join'>
+                    <clause type='join'>
+                      <expression op='='>
+                        <expression op='[rides_fact].[rideable_type_sk_id]' />
+                        <expression op='[rideable_type_dim].[rideable_type_sk_id]' />
+                      </expression>
+                    </clause>
+                    <relation join='inner' type='join'>
+                      <clause type='join'>
+                        <expression op='='>
+                          <expression op='[rides_fact].[member_type_sk_id]' />
+                          <expression op='[member_type_dim].[member_type_sk_id]' />
+                        </expression>
+                      </clause>
+                      <relation join='inner' type='join'>
+                        <clause type='join'>
+                          <expression op='='>
+                            <expression op='[rides_fact].[date_sk_id]' />
+                            <expression op='[date_dim].[date_sk_id]' />
+                          </expression>
+                        </clause>
+                        <relation connection='mysql.1bh72e80mg07la1d3mlqy01bg4s6' name='rides_fact' table='[rides_fact]' type='table' />
+                        <relation connection='mysql.1bh72e80mg07la1d3mlqy01bg4s6' name='date_dim' table='[date_dim]' type='table' />
+                      </relation>
+                      <relation connection='mysql.1bh72e80mg07la1d3mlqy01bg4s6' name='member_type_dim' table='[member_type_dim]' type='table' />
+                    </relation>
+                    <relation connection='mysql.1bh72e80mg07la1d3mlqy01bg4s6' name='rideable_type_dim' table='[rideable_type_dim]' type='table' />
+                  </relation>
+                  <relation connection='mysql.1bh72e80mg07la1d3mlqy01bg4s6' name='station_dim' table='[station_dim]' type='table' />
+                </relation>
+                <relation connection='mysql.1bh72e80mg07la1d3mlqy01bg4s6' name='weather_dim' table='[weather_dim]' type='table' />
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <shared-views>
+    <shared-view name='federated.1m7m90n16lv3kp11m1co31xlxkrj'>
+      <datasources>
+        <datasource caption='citibike_dw' name='federated.1m7m90n16lv3kp11m1co31xlxkrj' />
+      </datasources>
+      <datasource-dependencies datasource='federated.1m7m90n16lv3kp11m1co31xlxkrj'>
+        <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+        <column caption='Member Type' datatype='string' name='[member_type_desc]' role='dimension' type='nominal' />
+        <column-instance column='[date]' derivation='None' name='[none:date:qk]' pivot='key' type='quantitative' />
+        <column-instance column='[member_type_desc]' derivation='None' name='[none:member_type_desc:nk]' pivot='key' type='nominal' />
+        <column-instance column='[rideable_type_desc]' derivation='None' name='[none:rideable_type_desc:nk]' pivot='key' type='nominal' />
+        <column-instance column='[station_name]' derivation='None' name='[none:station_name:nk]' pivot='key' type='nominal' />
+        <column-instance column='[weather_name]' derivation='None' name='[none:weather_name:nk]' pivot='key' type='nominal' />
+        <column caption='Rideable Type' datatype='string' name='[rideable_type_desc]' role='dimension' type='nominal' />
+        <column caption='Station Name' datatype='string' name='[station_name]' role='dimension' type='nominal' />
+        <column caption='Weather' datatype='string' name='[weather_name]' role='dimension' type='nominal' />
+      </datasource-dependencies>
+      <filter class='quantitative' column='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:date:qk]' included-values='in-range'>
+        <min>#2023-12-01#</min>
+        <max>#2023-12-31#</max>
+      </filter>
+      <filter class='categorical' column='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:member_type_desc:nk]'>
+        <groupfilter function='level-members' level='[none:member_type_desc:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+      </filter>
+      <filter class='categorical' column='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:rideable_type_desc:nk]'>
+        <groupfilter function='level-members' level='[none:rideable_type_desc:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+      </filter>
+      <filter class='categorical' column='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:station_name:nk]'>
+        <groupfilter function='level-members' level='[none:station_name:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+      </filter>
+      <filter class='categorical' column='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:weather_name:nk]'>
+        <groupfilter function='level-members' level='[none:weather_name:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+      </filter>
+    </shared-view>
+  </shared-views>
+  <actions>
+    <action caption='Filter1' name='[Action1_5B249D0718A1460589CC28B136D88423]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Citibike Performance' type='sheet' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Citibike Performance' />
+      </command>
+    </action>
+  </actions>
+  <worksheets>
+    <worksheet name='# Fare'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontalignment='1'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='citibike_dw' name='federated.1m7m90n16lv3kp11m1co31xlxkrj' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Legend Selector' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;All&quot;'>
+              <calculation class='tableau' formula='&quot;All&quot;' />
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.1m7m90n16lv3kp11m1co31xlxkrj'>
+            <column caption='Legend' datatype='string' name='[Calculation_588282712874438658]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1]&#13;&#10;WHEN &apos;All&apos; THEN &apos;All&apos;&#13;&#10;WHEN &apos;Member&apos; THEN [member_type_desc]&#13;&#10;WHEN &apos;Rideable&apos; THEN [rideable_type_desc]&#13;&#10;END' />
+            </column>
+            <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+            <column caption='Member Type' datatype='string' name='[member_type_desc]' role='dimension' type='nominal' />
+            <column-instance column='[date]' derivation='None' name='[none:date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[member_type_desc]' derivation='None' name='[none:member_type_desc:nk]' pivot='key' type='nominal' />
+            <column-instance column='[rideable_type_desc]' derivation='None' name='[none:rideable_type_desc:nk]' pivot='key' type='nominal' />
+            <column-instance column='[station_name]' derivation='None' name='[none:station_name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[weather_name]' derivation='None' name='[none:weather_name:nk]' pivot='key' type='nominal' />
+            <column caption='Rideable Type' datatype='string' name='[rideable_type_desc]' role='dimension' type='nominal' />
+            <column caption='Station Name' datatype='string' name='[station_name]' role='dimension' type='nominal' />
+            <column-instance column='[total_fare]' derivation='Sum' name='[sum:total_fare:qk]' pivot='key' type='quantitative' />
+            <column caption='Total Fare' datatype='real' default-format='c&quot;$&quot;#,##0.00;(&quot;$&quot;#,##0.00)' name='[total_fare]' role='measure' type='quantitative' />
+            <column caption='Weather' datatype='string' name='[weather_name]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[Action (Legend,Date)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_5B249D0718A1460589CC28B136D88423]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Calculation_588282712874438658]' />
+              <groupfilter function='level-members' level='[date]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[Action (Legend,Weather)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_5B249D0718A1460589CC28B136D88423]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Calculation_588282712874438658]' />
+              <groupfilter function='level-members' level='[weather_name]' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:date:qk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:weather_name:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:rideable_type_desc:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:member_type_desc:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:station_name:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[Action (Legend,Weather)]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[Action (Legend,Date)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[sum:total_fare:qk]' value='c&quot;$&quot;#,##0;(&quot;$&quot;#,##0)' />
+            <format attr='font-size' field='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[sum:total_fare:qk]' value='24' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='background-color' value='#00000000' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[sum:total_fare:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='cell'>
+                <format attr='text-align' value='center' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{CD242396-19D6-45BA-982F-5B89EB72C99D}' />
+    </worksheet>
+    <worksheet name='# Hours'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontalignment='1'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='citibike_dw' name='federated.1m7m90n16lv3kp11m1co31xlxkrj' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Legend Selector' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;All&quot;'>
+              <calculation class='tableau' formula='&quot;All&quot;' />
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.1m7m90n16lv3kp11m1co31xlxkrj'>
+            <column caption='Legend' datatype='string' name='[Calculation_588282712874438658]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1]&#13;&#10;WHEN &apos;All&apos; THEN &apos;All&apos;&#13;&#10;WHEN &apos;Member&apos; THEN [member_type_desc]&#13;&#10;WHEN &apos;Rideable&apos; THEN [rideable_type_desc]&#13;&#10;END' />
+            </column>
+            <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+            <column caption='Member Type' datatype='string' name='[member_type_desc]' role='dimension' type='nominal' />
+            <column-instance column='[date]' derivation='None' name='[none:date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[member_type_desc]' derivation='None' name='[none:member_type_desc:nk]' pivot='key' type='nominal' />
+            <column-instance column='[rideable_type_desc]' derivation='None' name='[none:rideable_type_desc:nk]' pivot='key' type='nominal' />
+            <column-instance column='[station_name]' derivation='None' name='[none:station_name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[weather_name]' derivation='None' name='[none:weather_name:nk]' pivot='key' type='nominal' />
+            <column caption='Rideable Type' datatype='string' name='[rideable_type_desc]' role='dimension' type='nominal' />
+            <column caption='Station Name' datatype='string' name='[station_name]' role='dimension' type='nominal' />
+            <column-instance column='[total_usage_hours]' derivation='Sum' name='[sum:total_usage_hours:qk]' pivot='key' type='quantitative' />
+            <column caption='Total Usage Hours' datatype='real' name='[total_usage_hours]' role='measure' type='quantitative' />
+            <column caption='Weather' datatype='string' name='[weather_name]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[Action (Legend,Date)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_5B249D0718A1460589CC28B136D88423]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Calculation_588282712874438658]' />
+              <groupfilter function='level-members' level='[date]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[Action (Legend,Weather)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_5B249D0718A1460589CC28B136D88423]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Calculation_588282712874438658]' />
+              <groupfilter function='level-members' level='[weather_name]' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:date:qk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:weather_name:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:rideable_type_desc:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:member_type_desc:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:station_name:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[Action (Legend,Weather)]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[Action (Legend,Date)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='font-size' field='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[sum:total_usage_hours:qk]' value='24' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='background-color' value='#00000000' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[sum:total_usage_hours:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='cell'>
+                <format attr='text-align' value='center' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{985AB6DB-8260-445B-A131-7932A481F587}' />
+    </worksheet>
+    <worksheet name='# Rides'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontalignment='1'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='citibike_dw' name='federated.1m7m90n16lv3kp11m1co31xlxkrj' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Legend Selector' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;All&quot;'>
+              <calculation class='tableau' formula='&quot;All&quot;' />
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.1m7m90n16lv3kp11m1co31xlxkrj'>
+            <column caption='Legend' datatype='string' name='[Calculation_588282712874438658]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1]&#13;&#10;WHEN &apos;All&apos; THEN &apos;All&apos;&#13;&#10;WHEN &apos;Member&apos; THEN [member_type_desc]&#13;&#10;WHEN &apos;Rideable&apos; THEN [rideable_type_desc]&#13;&#10;END' />
+            </column>
+            <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+            <column caption='Member Type' datatype='string' name='[member_type_desc]' role='dimension' type='nominal' />
+            <column-instance column='[date]' derivation='None' name='[none:date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[member_type_desc]' derivation='None' name='[none:member_type_desc:nk]' pivot='key' type='nominal' />
+            <column-instance column='[rideable_type_desc]' derivation='None' name='[none:rideable_type_desc:nk]' pivot='key' type='nominal' />
+            <column-instance column='[station_name]' derivation='None' name='[none:station_name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[weather_name]' derivation='None' name='[none:weather_name:nk]' pivot='key' type='nominal' />
+            <column caption='Rideable Type' datatype='string' name='[rideable_type_desc]' role='dimension' type='nominal' />
+            <column caption='Station Name' datatype='string' name='[station_name]' role='dimension' type='nominal' />
+            <column-instance column='[total_rides_count]' derivation='Sum' name='[sum:total_rides_count:qk]' pivot='key' type='quantitative' />
+            <column caption='Total Rides Count' datatype='integer' default-format='n#,##0;-#,##0' name='[total_rides_count]' role='measure' type='quantitative' />
+            <column caption='Weather' datatype='string' name='[weather_name]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[Action (Legend,Date)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_5B249D0718A1460589CC28B136D88423]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Calculation_588282712874438658]' />
+              <groupfilter function='level-members' level='[date]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[Action (Legend,Weather)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_5B249D0718A1460589CC28B136D88423]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Calculation_588282712874438658]' />
+              <groupfilter function='level-members' level='[weather_name]' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:date:qk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:weather_name:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:member_type_desc:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:rideable_type_desc:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:station_name:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[Action (Legend,Weather)]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[Action (Legend,Date)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='font-size' field='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[sum:total_rides_count:qk]' value='24' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='background-color' value='#00000000' />
+          </style-rule>
+          <style-rule element='quick-filter'>
+            <format attr='title' field='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:station_name:nk]' value='Station Name'>
+              <formatted-text>
+                <run fontsize='10'>Station Name</run>
+              </formatted-text>
+            </format>
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[sum:total_rides_count:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='cell'>
+                <format attr='text-align' value='center' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{5F5382C8-33C8-4516-A96B-B4AE5CB972FA}' />
+    </worksheet>
+    <worksheet name='Daily Trend'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontalignment='1'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='citibike_dw' name='federated.1m7m90n16lv3kp11m1co31xlxkrj' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Legend Selector' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;All&quot;'>
+              <calculation class='tableau' formula='&quot;All&quot;' />
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.1m7m90n16lv3kp11m1co31xlxkrj'>
+            <column caption='Legend' datatype='string' name='[Calculation_588282712874438658]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1]&#13;&#10;WHEN &apos;All&apos; THEN &apos;All&apos;&#13;&#10;WHEN &apos;Member&apos; THEN [member_type_desc]&#13;&#10;WHEN &apos;Rideable&apos; THEN [rideable_type_desc]&#13;&#10;END' />
+            </column>
+            <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+            <column caption='Member Type' datatype='string' name='[member_type_desc]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_588282712874438658]' derivation='None' name='[none:Calculation_588282712874438658:nk]' pivot='key' type='nominal' />
+            <column-instance column='[date]' derivation='None' name='[none:date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[member_type_desc]' derivation='None' name='[none:member_type_desc:nk]' pivot='key' type='nominal' />
+            <column-instance column='[rideable_type_desc]' derivation='None' name='[none:rideable_type_desc:nk]' pivot='key' type='nominal' />
+            <column-instance column='[station_name]' derivation='None' name='[none:station_name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[weather_name]' derivation='None' name='[none:weather_name:nk]' pivot='key' type='nominal' />
+            <column caption='Rideable Type' datatype='string' name='[rideable_type_desc]' role='dimension' type='nominal' />
+            <column caption='Station Name' datatype='string' name='[station_name]' role='dimension' type='nominal' />
+            <column-instance column='[total_rides_count]' derivation='Sum' name='[sum:total_rides_count:qk]' pivot='key' type='quantitative' />
+            <column caption='Total Rides Count' datatype='integer' default-format='n#,##0;-#,##0' name='[total_rides_count]' role='measure' type='quantitative' />
+            <column caption='Weather' datatype='string' name='[weather_name]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[Action (Legend,Weather)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_5B249D0718A1460589CC28B136D88423]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Calculation_588282712874438658]' />
+              <groupfilter function='level-members' level='[weather_name]' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:date:qk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:weather_name:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:rideable_type_desc:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:member_type_desc:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:station_name:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[Action (Legend,Weather)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:date:qk]' scope='cols' value='' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='background-color' value='#00000000' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:Calculation_588282712874438658:nk]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run fontcolor='#787878'>&lt;[Parameters].[Parameter 1]&gt;:&#9;</run>
+                <run bold='true'><![CDATA[<[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:Calculation_588282712874438658:nk]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Date:&#9;</run>
+                <run bold='true'><![CDATA[<[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:date:qk]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Total Rides Count:&#9;</run>
+                <run bold='true'><![CDATA[<[federated.1m7m90n16lv3kp11m1co31xlxkrj].[sum:total_rides_count:qk]>]]></run>
+              </formatted-text>
+            </customized-tooltip>
+          </pane>
+        </panes>
+        <rows>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[sum:total_rides_count:qk]</rows>
+        <cols>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:date:qk]</cols>
+      </table>
+      <simple-id uuid='{4D30DB9F-F385-4B5B-B452-EA3295C49842}' />
+    </worksheet>
+    <worksheet name='Hourly Traffic'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontalignment='1'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='citibike_dw' name='federated.1m7m90n16lv3kp11m1co31xlxkrj' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Legend Selector' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;All&quot;'>
+              <calculation class='tableau' formula='&quot;All&quot;' />
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.1m7m90n16lv3kp11m1co31xlxkrj'>
+            <column caption='Legend' datatype='string' name='[Calculation_588282712874438658]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1]&#13;&#10;WHEN &apos;All&apos; THEN &apos;All&apos;&#13;&#10;WHEN &apos;Member&apos; THEN [member_type_desc]&#13;&#10;WHEN &apos;Rideable&apos; THEN [rideable_type_desc]&#13;&#10;END' />
+            </column>
+            <column-instance column='[total_rides_count]' derivation='Avg' name='[avg:total_rides_count:qk]' pivot='key' type='quantitative' />
+            <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+            <column aggregation='Sum' caption='Hour' datatype='integer' name='[hour]' role='dimension' type='ordinal' />
+            <column caption='Member Type' datatype='string' name='[member_type_desc]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_588282712874438658]' derivation='None' name='[none:Calculation_588282712874438658:nk]' pivot='key' type='nominal' />
+            <column-instance column='[date]' derivation='None' name='[none:date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[hour]' derivation='None' name='[none:hour:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[member_type_desc]' derivation='None' name='[none:member_type_desc:nk]' pivot='key' type='nominal' />
+            <column-instance column='[rideable_type_desc]' derivation='None' name='[none:rideable_type_desc:nk]' pivot='key' type='nominal' />
+            <column-instance column='[station_name]' derivation='None' name='[none:station_name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[weather_name]' derivation='None' name='[none:weather_name:nk]' pivot='key' type='nominal' />
+            <column caption='Rideable Type' datatype='string' name='[rideable_type_desc]' role='dimension' type='nominal' />
+            <column caption='Station Name' datatype='string' name='[station_name]' role='dimension' type='nominal' />
+            <column caption='Total Rides Count' datatype='integer' default-format='n#,##0;-#,##0' name='[total_rides_count]' role='measure' type='quantitative' />
+            <column caption='Weather' datatype='string' name='[weather_name]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[Action (Legend,Date)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_5B249D0718A1460589CC28B136D88423]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Calculation_588282712874438658]' />
+              <groupfilter function='level-members' level='[date]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[Action (Legend,Weather)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_5B249D0718A1460589CC28B136D88423]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Calculation_588282712874438658]' />
+              <groupfilter function='level-members' level='[weather_name]' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:date:qk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:weather_name:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:rideable_type_desc:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:member_type_desc:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:station_name:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[Action (Legend,Weather)]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[Action (Legend,Date)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='header'>
+            <format attr='height-header' value='18' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='background-color' value='#00000000' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <encodings>
+              <color column='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:Calculation_588282712874438658:nk]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run fontcolor='#787878'>&lt;[Parameters].[Parameter 1]&gt;:&#9;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Hour:&#9;</run>
+                <run bold='true'><![CDATA[<[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:hour:ok]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Avg. Total Rides Count:&#9;</run>
+                <run bold='true'><![CDATA[<[federated.1m7m90n16lv3kp11m1co31xlxkrj].[avg:total_rides_count:qk]>]]></run>
+              </formatted-text>
+            </customized-tooltip>
+          </pane>
+        </panes>
+        <rows>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[avg:total_rides_count:qk]</rows>
+        <cols>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:hour:ok]</cols>
+      </table>
+      <simple-id uuid='{B4DAC404-9E52-4484-9B30-7AFE4454979A}' />
+    </worksheet>
+    <worksheet name='Weather'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontalignment='1'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='citibike_dw' name='federated.1m7m90n16lv3kp11m1co31xlxkrj' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Legend Selector' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;All&quot;'>
+              <calculation class='tableau' formula='&quot;All&quot;' />
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.1m7m90n16lv3kp11m1co31xlxkrj'>
+            <column caption='Legend' datatype='string' name='[Calculation_588282712874438658]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1]&#13;&#10;WHEN &apos;All&apos; THEN &apos;All&apos;&#13;&#10;WHEN &apos;Member&apos; THEN [member_type_desc]&#13;&#10;WHEN &apos;Rideable&apos; THEN [rideable_type_desc]&#13;&#10;END' />
+            </column>
+            <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+            <column caption='Member Type' datatype='string' name='[member_type_desc]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_588282712874438658]' derivation='None' name='[none:Calculation_588282712874438658:nk]' pivot='key' type='nominal' />
+            <column-instance column='[date]' derivation='None' name='[none:date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[member_type_desc]' derivation='None' name='[none:member_type_desc:nk]' pivot='key' type='nominal' />
+            <column-instance column='[rideable_type_desc]' derivation='None' name='[none:rideable_type_desc:nk]' pivot='key' type='nominal' />
+            <column-instance column='[station_name]' derivation='None' name='[none:station_name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[weather_name]' derivation='None' name='[none:weather_name:nk]' pivot='key' type='nominal' />
+            <column caption='Rideable Type' datatype='string' name='[rideable_type_desc]' role='dimension' type='nominal' />
+            <column caption='Station Name' datatype='string' name='[station_name]' role='dimension' type='nominal' />
+            <column-instance column='[total_rides_count]' derivation='Sum' name='[sum:total_rides_count:qk]' pivot='key' type='quantitative' />
+            <column caption='Total Rides Count' datatype='integer' default-format='n#,##0;-#,##0' name='[total_rides_count]' role='measure' type='quantitative' />
+            <column caption='Weather' datatype='string' name='[weather_name]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[Action (Legend,Date)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_5B249D0718A1460589CC28B136D88423]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Calculation_588282712874438658]' />
+              <groupfilter function='level-members' level='[date]' />
+            </groupfilter>
+          </filter>
+          <computed-sort column='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:weather_name:nk]' direction='DESC' using='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[sum:total_rides_count:qk]' />
+          <slices>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:date:qk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:weather_name:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:rideable_type_desc:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:member_type_desc:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:station_name:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[Action (Legend,Date)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[sum:total_rides_count:qk]' field-type='quantitative' range-type='independent' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:weather_name:nk]' value='124' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='display' field='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:Calculation_588282712874438658:nk]' value='false' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='background-color' value='#00000000' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:Calculation_588282712874438658:nk]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run fontcolor='#787878'>&lt;[Parameters].[Parameter 1]&gt;:&#9;</run>
+                <run bold='true'><![CDATA[<[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:Calculation_588282712874438658:nk]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Weather:&#9;</run>
+                <run bold='true'><![CDATA[<[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:weather_name:nk]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Total Rides Count:&#9;</run>
+                <run bold='true'><![CDATA[<[federated.1m7m90n16lv3kp11m1co31xlxkrj].[sum:total_rides_count:qk]>]]></run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:Calculation_588282712874438658:nk] * [federated.1m7m90n16lv3kp11m1co31xlxkrj].[sum:total_rides_count:qk])</rows>
+        <cols>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:weather_name:nk]</cols>
+      </table>
+      <simple-id uuid='{45D19F6F-ABAF-4AA4-9F9A-44DB91433865}' />
+    </worksheet>
+    <worksheet name='Weekday'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontalignment='1'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='citibike_dw' name='federated.1m7m90n16lv3kp11m1co31xlxkrj' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Legend Selector' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;All&quot;'>
+              <calculation class='tableau' formula='&quot;All&quot;' />
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.1m7m90n16lv3kp11m1co31xlxkrj'>
+            <column caption='Legend' datatype='string' name='[Calculation_588282712874438658]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1]&#13;&#10;WHEN &apos;All&apos; THEN &apos;All&apos;&#13;&#10;WHEN &apos;Member&apos; THEN [member_type_desc]&#13;&#10;WHEN &apos;Rideable&apos; THEN [rideable_type_desc]&#13;&#10;END' />
+            </column>
+            <column aggregation='Sum' datatype='integer' name='[Date (Weekdays)]' role='dimension' type='ordinal' user:agg-type='Weekday' user:base-field='date' user:ui-builder='date-bin-builder'>
+              <calculation class='tableau' formula='DATEPART(&apos;weekday&apos;, [date])' />
+            </column>
+            <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+            <column caption='Member Type' datatype='string' name='[member_type_desc]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_588282712874438658]' derivation='None' name='[none:Calculation_588282712874438658:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Date (Weekdays)]' derivation='None' name='[none:Date (Weekdays):ok]' pivot='key' type='ordinal' />
+            <column-instance column='[date]' derivation='None' name='[none:date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[member_type_desc]' derivation='None' name='[none:member_type_desc:nk]' pivot='key' type='nominal' />
+            <column-instance column='[rideable_type_desc]' derivation='None' name='[none:rideable_type_desc:nk]' pivot='key' type='nominal' />
+            <column-instance column='[station_name]' derivation='None' name='[none:station_name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[weather_name]' derivation='None' name='[none:weather_name:nk]' pivot='key' type='nominal' />
+            <column caption='Rideable Type' datatype='string' name='[rideable_type_desc]' role='dimension' type='nominal' />
+            <column caption='Station Name' datatype='string' name='[station_name]' role='dimension' type='nominal' />
+            <column-instance column='[total_rides_count]' derivation='Sum' name='[sum:total_rides_count:qk]' pivot='key' type='quantitative' />
+            <column caption='Total Rides Count' datatype='integer' default-format='n#,##0;-#,##0' name='[total_rides_count]' role='measure' type='quantitative' />
+            <column caption='Weather' datatype='string' name='[weather_name]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[Action (Legend,Date)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_5B249D0718A1460589CC28B136D88423]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Calculation_588282712874438658]' />
+              <groupfilter function='level-members' level='[date]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[Action (Legend,Weather)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_5B249D0718A1460589CC28B136D88423]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Calculation_588282712874438658]' />
+              <groupfilter function='level-members' level='[weather_name]' />
+            </groupfilter>
+          </filter>
+          <manual-sort column='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:Date (Weekdays):ok]' direction='ASC'>
+            <dictionary>
+              <bucket>2</bucket>
+              <bucket>3</bucket>
+              <bucket>4</bucket>
+              <bucket>5</bucket>
+              <bucket>6</bucket>
+              <bucket>7</bucket>
+              <bucket>1</bucket>
+            </dictionary>
+          </manual-sort>
+          <slices>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:date:qk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:weather_name:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:rideable_type_desc:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:member_type_desc:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:station_name:nk]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[Action (Legend,Weather)]</column>
+            <column>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[Action (Legend,Date)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[sum:total_rides_count:qk]' field-type='quantitative' range-type='independent' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:weather_name:nk]' value='124' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='display' field='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:Calculation_588282712874438658:nk]' value='false' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='background-color' value='#00000000' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:Calculation_588282712874438658:nk]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run fontcolor='#787878'>&lt;[Parameters].[Parameter 1]&gt;:&#9;</run>
+                <run bold='true'><![CDATA[<[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:Calculation_588282712874438658:nk]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Weather:&#9;</run>
+                <run bold='true'><![CDATA[<[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:Date (Weekdays):ok]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Total Rides Count:&#9;</run>
+                <run bold='true'><![CDATA[<[federated.1m7m90n16lv3kp11m1co31xlxkrj].[sum:total_rides_count:qk]>]]></run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:Calculation_588282712874438658:nk] * [federated.1m7m90n16lv3kp11m1co31xlxkrj].[sum:total_rides_count:qk])</rows>
+        <cols>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:Date (Weekdays):ok]</cols>
+      </table>
+      <simple-id uuid='{54F4B5A5-B1CC-4596-85F2-A82AD2791B42}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard _.fcp.AccessibleZoneTabOrder.true...enable-sort-zone-taborder='true' name='Citibike Performance'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontalignment='1'>&lt;Sheet Name&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <style />
+      <size sizing-mode='automatic' />
+      <datasources>
+        <datasource name='Parameters' />
+        <datasource caption='citibike_dw' name='federated.1m7m90n16lv3kp11m1co31xlxkrj' />
+      </datasources>
+      <datasource-dependencies datasource='Parameters'>
+        <column caption='Legend Selector' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;All&quot;'>
+          <calculation class='tableau' formula='&quot;All&quot;' />
+          <members>
+            <member value='&quot;All&quot;' />
+            <member value='&quot;Member&quot;' />
+            <member value='&quot;Rideable&quot;' />
+          </members>
+        </column>
+      </datasource-dependencies>
+      <datasource-dependencies datasource='federated.1m7m90n16lv3kp11m1co31xlxkrj'>
+        <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+        <column caption='Member Type' datatype='string' name='[member_type_desc]' role='dimension' type='nominal' />
+        <column-instance column='[date]' derivation='None' name='[none:date:qk]' pivot='key' type='quantitative' />
+        <column-instance column='[member_type_desc]' derivation='None' name='[none:member_type_desc:nk]' pivot='key' type='nominal' />
+        <column-instance column='[rideable_type_desc]' derivation='None' name='[none:rideable_type_desc:nk]' pivot='key' type='nominal' />
+        <column-instance column='[station_name]' derivation='None' name='[none:station_name:nk]' pivot='key' type='nominal' />
+        <column-instance column='[weather_name]' derivation='None' name='[none:weather_name:nk]' pivot='key' type='nominal' />
+        <column caption='Rideable Type' datatype='string' name='[rideable_type_desc]' role='dimension' type='nominal' />
+        <column caption='Station Name' datatype='string' name='[station_name]' role='dimension' type='nominal' />
+        <column caption='Weather' datatype='string' name='[weather_name]' role='dimension' type='nominal' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='16' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98214' id='27' param='vert' type-v2='layout-flow' w='99064' x='468' y='893'>
+            <zone h='6473' id='29' layout-strategy-id='distribute-evenly' param='horz' type-v2='layout-flow' w='99064' x='468' y='893'>
+              <zone h='5357' id='31' type-v2='empty' w='32826' x='761' y='1451'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='5357' id='28' type-v2='title' w='32826' x='33587' y='1451'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone forceUpdate='true' h='5357' id='30' type-v2='text' w='32826' x='66413' y='1451'>
+                <formatted-text>
+                  <run bold='true' fontalignment='2' fontcolor='#b07aa1' fontsize='18'>Surya S S   </run>
+                  <run bold='true' fontalignment='2' fontcolor='#ffffff' fontsize='18'>g         </run>
+                </formatted-text>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#898989' />
+                <format attr='border-style' value='solid' />
+                <format attr='border-width' value='1' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone fixed-size='66' h='8259' id='21' is-fixed='true' layout-strategy-id='distribute-evenly' param='horz' type-v2='layout-flow' w='99064' x='468' y='7366'>
+              <zone h='7143' id='24' mode='checkdropdown' name='# Rides' param='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:station_name:nk]' show-apply='true' type-v2='filter' values='database' w='14101' x='761' y='7924'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='7143' id='25' mode='checkdropdown' name='# Rides' param='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:weather_name:nk]' show-apply='true' type-v2='filter' values='database' w='14102' x='14862' y='7924'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='7143' id='22' mode='checkdropdown' name='# Rides' param='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:member_type_desc:nk]' show-apply='true' type-v2='filter' values='database' w='14102' x='28964' y='7924'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='7143' id='23' mode='checkdropdown' name='# Rides' param='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:rideable_type_desc:nk]' show-apply='true' type-v2='filter' values='database' w='14043' x='43066' y='7924'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='7143' id='12' mode='compact' param='[Parameters].[Parameter 1]' type-v2='paramctrl' w='14044' x='57109' y='7924'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='7143' id='20' name='# Rides' param='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:date:qk]' type-v2='filter' values='database' w='14043' x='71153' y='7924'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='7143' id='14' leg-item-layout='horz' name='Hourly Traffic' pane-specification-id='0' param='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:Calculation_588282712874438658:nk]' type-v2='color' w='14043' x='85196' y='7924'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#898989' />
+                <format attr='border-style' value='solid' />
+                <format attr='border-width' value='1' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='83482' id='19' param='horz' type-v2='layout-flow' w='99064' x='468' y='15625'>
+              <zone h='83482' id='17' type-v2='layout-basic' w='99064' x='468' y='15625'>
+                <zone h='35496' id='11' name='Daily Trend' w='49532' x='468' y='26223'>
+                  <zone-style>
+                    <format attr='border-color' value='#898989' />
+                    <format attr='border-style' value='solid' />
+                    <format attr='border-width' value='1' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='37388' id='13' name='Hourly Traffic' w='49532' x='468' y='61719'>
+                  <zone-style>
+                    <format attr='border-color' value='#898989' />
+                    <format attr='border-style' value='solid' />
+                    <format attr='border-width' value='1' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='35496' id='15' name='Weather' w='49532' x='50000' y='26223'>
+                  <zone-style>
+                    <format attr='border-color' value='#898989' />
+                    <format attr='border-style' value='solid' />
+                    <format attr='border-width' value='1' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='10598' id='3' layout-strategy-id='distribute-evenly' param='horz' type-v2='layout-flow' w='99064' x='468' y='15625'>
+                  <zone h='10603' id='4' name='# Rides' w='33060' x='468' y='15625'>
+                    <layout-cache fixed-size-h='92' type-h='fixed' type-w='fixed' />
+                    <zone-style>
+                      <format attr='border-color' value='#898989' />
+                      <format attr='border-style' value='solid' />
+                      <format attr='border-width' value='1' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                  <zone h='10603' id='5' name='# Fare' w='33002' x='33528' y='15625'>
+                    <layout-cache type-h='fixed' type-w='fixed' />
+                    <zone-style>
+                      <format attr='border-color' value='#898989' />
+                      <format attr='border-style' value='solid' />
+                      <format attr='border-width' value='1' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                  <zone h='10603' id='6' name='# Hours' w='33002' x='66530' y='15625'>
+                    <layout-cache type-h='fixed' type-w='fixed' />
+                    <zone-style>
+                      <format attr='border-color' value='#898989' />
+                      <format attr='border-style' value='solid' />
+                      <format attr='border-width' value='1' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='37388' id='34' name='Weekday' w='49532' x='50000' y='61719'>
+                  <zone-style>
+                    <format attr='border-color' value='#898989' />
+                    <format attr='border-style' value='solid' />
+                    <format attr='border-width' value='1' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+            <format attr='background-color' value='#fbf7fb' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <layout-options>
+            <title>
+              <formatted-text>
+                <run fontalignment='1'>&lt;Sheet Name&gt;</run>
+              </formatted-text>
+            </title>
+          </layout-options>
+          <size maxheight='2000' minheight='2000' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='42' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98214' id='41' param='vert' type-v2='layout-flow' w='99064' x='468' y='893'>
+                <zone h='5357' id='28' type-v2='title' w='32826' x='33587' y='1451'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone forceUpdate='true' h='5357' id='30' type-v2='text' w='32826' x='66413' y='1451'>
+                  <formatted-text>
+                    <run bold='true' fontalignment='2' fontcolor='#b07aa1' fontsize='18'>Surya S S   </run>
+                    <run bold='true' fontalignment='2' fontcolor='#ffffff' fontsize='18'>g         </run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='7143' id='12' mode='compact' param='[Parameters].[Parameter 1]' type-v2='paramctrl' w='14044' x='57109' y='7924'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='7143' id='24' mode='checkdropdown' name='# Rides' param='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:station_name:nk]' show-apply='true' type-v2='filter' values='database' w='14101' x='761' y='7924'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='7143' id='25' mode='checkdropdown' name='# Rides' param='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:weather_name:nk]' show-apply='true' type-v2='filter' values='database' w='14102' x='14862' y='7924'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='7143' id='22' mode='checkdropdown' name='# Rides' param='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:member_type_desc:nk]' show-apply='true' type-v2='filter' values='database' w='14102' x='28964' y='7924'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='7143' id='23' mode='checkdropdown' name='# Rides' param='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:rideable_type_desc:nk]' show-apply='true' type-v2='filter' values='database' w='14043' x='43066' y='7924'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='7143' id='20' name='# Rides' param='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:date:qk]' type-v2='filter' values='database' w='14043' x='71153' y='7924'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='75' h='10603' id='4' is-fixed='true' name='# Rides' w='33060' x='468' y='15625'>
+                  <layout-cache fixed-size-h='92' type-h='fixed' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#898989' />
+                    <format attr='border-style' value='solid' />
+                    <format attr='border-width' value='1' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='75' h='10603' id='5' is-fixed='true' name='# Fare' w='33002' x='33528' y='15625'>
+                  <layout-cache type-h='fixed' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#898989' />
+                    <format attr='border-style' value='solid' />
+                    <format attr='border-width' value='1' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='75' h='10603' id='6' is-fixed='true' name='# Hours' w='33002' x='66530' y='15625'>
+                  <layout-cache type-h='fixed' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#898989' />
+                    <format attr='border-style' value='solid' />
+                    <format attr='border-width' value='1' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='274' h='35496' id='11' is-fixed='true' name='Daily Trend' w='49532' x='468' y='26223'>
+                  <zone-style>
+                    <format attr='border-color' value='#898989' />
+                    <format attr='border-style' value='solid' />
+                    <format attr='border-width' value='1' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='274' h='35496' id='15' is-fixed='true' name='Weather' w='49532' x='50000' y='26223'>
+                  <zone-style>
+                    <format attr='border-color' value='#898989' />
+                    <format attr='border-style' value='solid' />
+                    <format attr='border-width' value='1' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='37388' id='13' is-fixed='true' name='Hourly Traffic' w='49532' x='468' y='61719'>
+                  <zone-style>
+                    <format attr='border-color' value='#898989' />
+                    <format attr='border-style' value='solid' />
+                    <format attr='border-width' value='1' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='7143' id='14' leg-item-layout='horz' name='Hourly Traffic' pane-specification-id='0' param='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:Calculation_588282712874438658:nk]' type-v2='color' w='14043' x='85196' y='7924'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='37388' id='34' is-fixed='true' name='Weekday' w='49532' x='50000' y='61719'>
+                  <zone-style>
+                    <format attr='border-color' value='#898989' />
+                    <format attr='border-style' value='solid' />
+                    <format attr='border-width' value='1' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+                <format attr='background-color' value='#fbf7fb' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{30E36490-AF62-427C-8263-4BB25BE91C3F}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='30'>
+    <window class='dashboard' maximized='true' name='Citibike Performance'>
+      <viewpoints>
+        <viewpoint name='# Fare'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='# Hours'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='# Rides'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Daily Trend'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Hourly Traffic'>
+          <zoom type='entire-view' />
+          <highlight>
+            <color-one-way>
+              <field>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:Calculation_588282712874438658:nk]</field>
+            </color-one-way>
+          </highlight>
+        </viewpoint>
+        <viewpoint name='Weather'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Weekday'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='11' />
+      <simple-id uuid='{78FA3C12-DF5A-46F2-8640-7B1595CAA3F8}' />
+    </window>
+    <window class='worksheet' hidden='true' name='# Fare'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{F6B9ED09-21AA-49B1-935C-AE6CA986A996}' />
+    </window>
+    <window class='worksheet' hidden='true' name='# Hours'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{03680F93-03E6-4B5D-B157-1876F4695522}' />
+    </window>
+    <window class='worksheet' hidden='true' name='# Rides'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:date:qk]</field>
+            <field>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:member_type_desc:nk]</field>
+            <field>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:rideable_type_desc:nk]</field>
+            <field>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:station_name:nk]</field>
+            <field>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:weather_name:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{A2F56B31-2C90-438B-916D-867908D119CA}' />
+    </window>
+    <window class='worksheet' hidden='true' name='Daily Trend'>
+      <cards>
+        <edge name='left'>
+          <strip size='227'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card mode='compact' param='[Parameters].[Parameter 1]' type='parameter' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[:Measure Names]</field>
+            <field>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:Calculation_588282712874438658:nk]</field>
+            <field>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:date:qk]</field>
+            <field>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[yr:date:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{956FF56E-0AB3-4CDF-B331-C50423004FDC}' />
+    </window>
+    <window class='worksheet' hidden='true' name='Hourly Traffic'>
+      <cards>
+        <edge name='left'>
+          <strip size='227'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:Calculation_588282712874438658:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[:Measure Names]</field>
+            <field>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:Calculation_588282712874438658:nk]</field>
+            <field>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:date:qk]</field>
+            <field>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:hour:ok]</field>
+            <field>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:member_type_desc:nk]</field>
+            <field>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:rideable_type_desc:nk]</field>
+            <field>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:weather_name:nk]</field>
+            <field>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[yr:date:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{DD2A0092-6779-4EC2-B678-E5E7C4AC8C05}' />
+    </window>
+    <window class='worksheet' hidden='true' name='Weather'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:Calculation_588282712874438658:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:Calculation_588282712874438658:nk]</field>
+            <field>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:weather_name:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{E3E13107-0160-48B2-9B9F-32F983677122}' />
+    </window>
+    <window class='worksheet' hidden='true' name='Weekday'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:Calculation_588282712874438658:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:Calculation_588282712874438658:nk]</field>
+            <field>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:Date (Weekdays):ok]</field>
+            <field>[federated.1m7m90n16lv3kp11m1co31xlxkrj].[none:weather_name:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{5F19D13F-A94D-40D5-AE9D-A6F0091A791A}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Citibike Performance' width='192'>
+      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
+    </thumbnail>
+  </thumbnails>
+</workbook>
