@@ -7,7 +7,6 @@ CREATE  TABLE citibike_dw.date_dim (
 	year                 INT    NOT NULL   ,
 	quarter              INT    NOT NULL   ,
 	month                INT    NOT NULL   ,
-	week                 DATE    NOT NULL   ,
 	day                  INT    NOT NULL   ,
 	hour                 INT    NOT NULL   
  );

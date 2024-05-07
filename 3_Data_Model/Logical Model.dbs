@@ -18,9 +18,6 @@
 			<column name="Month" type="INT" jt="4" >
 				<comment><![CDATA[Month of Date]]></comment>
 			</column>
-			<column name="Week" type="DATE" jt="91" >
-				<comment><![CDATA[Week of Date]]></comment>
-			</column>
 			<column name="Day" type="INT" jt="4" >
 				<comment><![CDATA[Day of Date]]></comment>
 			</column>
@@ -147,12 +144,12 @@
 		<entity schema="Logical Design.INSTANCE" name="Station_Dim" color="C1D8EE" x="48" y="400" />
 		<entity schema="Logical Design.INSTANCE" name="Weather_Dim" color="C1D8EE" x="320" y="624" />
 		<group name="LOGICAL MODEL" color="0000FF" >
-			<entity schema="Logical Design.INSTANCE" name="Date_Dim" />
 			<entity schema="Logical Design.INSTANCE" name="Station_Dim" />
 			<entity schema="Logical Design.INSTANCE" name="Member_Type_Dim" />
 			<entity schema="Logical Design.INSTANCE" name="Rideable_Type_Dim" />
 			<entity schema="Logical Design.INSTANCE" name="Rides_Fact" />
 			<entity schema="Logical Design.INSTANCE" name="Weather_Dim" />
+			<entity schema="Logical Design.INSTANCE" name="Date_Dim" />
 		</group>
 	</layout>
 </project>
