@@ -1,4 +1,4 @@
-INSERT INTO citibike_dw.date_dim (date, year, quarter, month, week, day, hour)
+INSERT INTO citibike_dw.date_dim (date, year, quarter, month, day, hour)
 SELECT DATE(started_at), YEAR(started_at), QUARTER(started_at), MONTH(started_at), DAY(started_at), HOUR(started_at) FROM  citibike_db.data
 GROUP BY 1,2,3,4,5,6
 ORDER BY 1,6;
